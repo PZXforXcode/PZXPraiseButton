@@ -13,6 +13,10 @@
 		700087DC1DDAF15300599E8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 700087DA1DDAF15300599E8F /* Main.storyboard */; };
 		700087DE1DDAF15300599E8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 700087DD1DDAF15300599E8F /* Assets.xcassets */; };
 		700087E11DDAF15300599E8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 700087DF1DDAF15300599E8F /* LaunchScreen.storyboard */; };
+		700087EB1DDAF1E100599E8F /* PZXPraiseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 700087EA1DDAF1E100599E8F /* PZXPraiseButton.m */; };
+		70C011B01DDC4C10000F9A25 /* 桃心-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C011AE1DDC4C0F000F9A25 /* 桃心-2.png */; };
+		70C011B11DDC4C10000F9A25 /* 桃心.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C011AF1DDC4C10000F9A25 /* 桃心.png */; };
+		70C011B31DDC4C42000F9A25 /* 桃心-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 70C011B21DDC4C42000F9A25 /* 桃心-3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,11 @@
 		700087DD1DDAF15300599E8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		700087E01DDAF15300599E8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		700087E21DDAF15300599E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		700087E91DDAF1E100599E8F /* PZXPraiseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PZXPraiseButton.h; sourceTree = "<group>"; };
+		700087EA1DDAF1E100599E8F /* PZXPraiseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PZXPraiseButton.m; sourceTree = "<group>"; };
+		70C011AE1DDC4C0F000F9A25 /* 桃心-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "桃心-2.png"; sourceTree = "<group>"; };
+		70C011AF1DDC4C10000F9A25 /* 桃心.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "桃心.png"; sourceTree = "<group>"; };
+		70C011B21DDC4C42000F9A25 /* 桃心-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "桃心-3.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,7 @@
 		700087D01DDAF15300599E8F /* PZXPraiseButton */ = {
 			isa = PBXGroup;
 			children = (
+				700087E81DDAF1CD00599E8F /* PZXPraiseButtonControl */,
 				700087D41DDAF15300599E8F /* AppDelegate.h */,
 				700087D51DDAF15300599E8F /* AppDelegate.m */,
 				700087D71DDAF15300599E8F /* ViewController.h */,
@@ -77,6 +87,18 @@
 				700087D21DDAF15300599E8F /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		700087E81DDAF1CD00599E8F /* PZXPraiseButtonControl */ = {
+			isa = PBXGroup;
+			children = (
+				70C011AE1DDC4C0F000F9A25 /* 桃心-2.png */,
+				70C011B21DDC4C42000F9A25 /* 桃心-3.png */,
+				70C011AF1DDC4C10000F9A25 /* 桃心.png */,
+				700087E91DDAF1E100599E8F /* PZXPraiseButton.h */,
+				700087EA1DDAF1E100599E8F /* PZXPraiseButton.m */,
+			);
+			path = PZXPraiseButtonControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +160,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70C011B11DDC4C10000F9A25 /* 桃心.png in Resources */,
+				70C011B01DDC4C10000F9A25 /* 桃心-2.png in Resources */,
 				700087E11DDAF15300599E8F /* LaunchScreen.storyboard in Resources */,
+				70C011B31DDC4C42000F9A25 /* 桃心-3.png in Resources */,
 				700087DE1DDAF15300599E8F /* Assets.xcassets in Resources */,
 				700087DC1DDAF15300599E8F /* Main.storyboard in Resources */,
 			);
@@ -153,6 +178,7 @@
 			files = (
 				700087D91DDAF15300599E8F /* ViewController.m in Sources */,
 				700087D61DDAF15300599E8F /* AppDelegate.m in Sources */,
+				700087EB1DDAF1E100599E8F /* PZXPraiseButton.m in Sources */,
 				700087D31DDAF15300599E8F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +338,7 @@
 				700087E71DDAF15300599E8F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
