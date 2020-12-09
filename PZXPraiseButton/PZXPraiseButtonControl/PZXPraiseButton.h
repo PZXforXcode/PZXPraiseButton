@@ -10,6 +10,9 @@
 
 @interface PZXPraiseButton : UIButton
 
-
+//动画时间 默认0.8 建议不低于0.5
+@property(nonatomic,assign)CGFloat animateTime;
+//粒子颜色，适配不同的图片
+@property(nonatomic,strong)UIColor *emitterColor;
 
 @end

@@ -6,7 +6,6 @@
 //  Copyright © 2016年 pzx. All rights reserved.
 //
 
-#define animateTime 0.8
 
 #import "PZXPraiseButton.h"
 
@@ -34,6 +33,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.frame  = frame;
+        
         [self initializeUserInterfacer];
         
     }
@@ -58,6 +58,8 @@
 
 }
 -(void)initializeUserInterfacer{
+    self.animateTime = 0.8;
+    self.emitterColor = [UIColor colorWithRed:1 green:0.5 blue:0.1 alpha:1.0];
     _bloomView = [[UIView alloc]initWithFrame:self.bounds];
     self.bloomView.userInteractionEnabled = NO;//关键代码必须关闭view的交互，不然会影响按钮点击事件
     //把粒子效果的view插到按钮后面
@@ -75,7 +77,7 @@
     if (self.isSelected == NO) {
         
         [self clickToSelectedAnimate];
-        [self performSelector:@selector(animate) withObject:nil afterDelay:0.5];
+        [self performSelector:@selector(animate) withObject:nil afterDelay:self.animateTime];
 
     }else{
         
@@ -87,18 +89,19 @@
 }
 
 -(void)clickToSelectedAnimate{
+    
     //UIKit的多段动画
-    [UIView animateKeyframesWithDuration:animateTime delay:0 options:0 animations:^{
+    [UIView animateKeyframesWithDuration:self.animateTime delay:0 options:0 animations:^{
         
         [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:1/3.0 animations:^{
             
-            self.transform = CGAffineTransformMakeScale(1.6, 1.6);
+            self.transform = CGAffineTransformMakeScale(1.2, 1.2);
 
             
         }];
         [UIView addKeyframeWithRelativeStartTime:1/3.0 relativeDuration:1/3.0 animations:^{
             
-            self.transform = CGAffineTransformMakeScale(0.6, 0.6);
+            self.transform = CGAffineTransformMakeScale(0.8, 0.8);
 
         }];
         [UIView addKeyframeWithRelativeStartTime:2/3.0 relativeDuration:1/3.0 animations:^{
@@ -111,17 +114,20 @@
         
         
         
-    } completion:nil];
+    } completion:^(BOOL finished) {
+
+    }];
 
 }
 -(void)clickToUNSelectedAnimate{
  
-    [UIView animateKeyframesWithDuration:animateTime delay:0 options:0 animations:^{
+
+    [UIView animateKeyframesWithDuration:self.animateTime delay:0 options:0 animations:^{
         
 
         [UIView addKeyframeWithRelativeStartTime:0 relativeDuration:1/2.0 animations:^{
             
-            self.transform = CGAffineTransformMakeScale(0.6, 0.6);
+            self.transform = CGAffineTransformMakeScale(0.8, 0.8);
             
         }];
         [UIView addKeyframeWithRelativeStartTime:1/2.0 relativeDuration:1/2.0 animations:^{
@@ -134,7 +140,9 @@
         
 
         
-    } completion:nil];
+    } completion:^(BOOL finished) {
+
+    }];
     
 }
 
@@ -142,6 +150,7 @@
 //制作粒子效果
 -(void)makeCAEmitterLayer{
 
+    [self.bloomView.layer removeFromSuperlayer];
     //设置例子layer
     CAEmitterLayer *emitter = [CAEmitterLayer layer];
     //渲染效果
@@ -160,11 +169,11 @@
     _emitter = emitter;
     CAEmitterCell *cell = [[CAEmitterCell alloc] init];
     cell.name = @"cube";
-    cell.contents = (__bridge id)[self imageWithColor:[UIColor colorWithRed:1 green:0.5 blue:0.1 alpha:1.0] andSize:CGSizeMake(3, 3)].CGImage;
+    cell.contents = (__bridge id)[self imageWithColor:self.emitterColor andSize:CGSizeMake(3, 3)].CGImage;
     //出身率
     cell.birthRate = 0;
     //存在时间
-    cell.lifetime = 1.f;
+    cell.lifetime = self.animateTime;
 
     cell.lifetimeRange = 0.5;
     cell.color = [UIColor colorWithRed:1 green:0.5 blue:0.1 alpha:1.0].CGColor;
@@ -203,6 +212,7 @@
 
 
 - (void)animate {
+    
     [self.emitter setValue:@800 forKeyPath:@"emitterCells.cube.birthRate"];
     [self performSelector:@selector(stop) withObject:nil afterDelay:0.1];
 
@@ -215,5 +225,10 @@
     [self.emitter setValue:@0 forKeyPath:@"emitterCells.cube.birthRate"];
 
 
+}
+-(void)setEmitterColor:(UIColor *)emitterColor{
+    
+    _emitterColor = emitterColor;
+    [self makeCAEmitterLayer];
 }
 @end
